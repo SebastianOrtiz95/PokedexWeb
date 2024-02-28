@@ -67,9 +67,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Conten\css.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="ListaPokemon.aspx" />
+    <Content Include="script\JavaScript.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
