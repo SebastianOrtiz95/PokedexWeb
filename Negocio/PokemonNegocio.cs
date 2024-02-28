@@ -17,7 +17,48 @@ namespace Negocio
 		{
 			datos = new AccesoDatos();	
 		}
-		
+		public List<Pokemon> listarSP()
+		{
+            List<Pokemon> lista = new List<Pokemon>();
+            datos = new AccesoDatos();
+            try
+            {
+				//datos.setearConsulta("select P.id,numero,nombre,P.Descripcion,UrlImagen,E.Descripcion tipo,D.Descripcion debilidad,P.IdTipo,P.IdDebilidad from POKEMONS P,ELEMENTOS D,ELEMENTOS E where P.IdTipo = E.Id and   P.IdDebilidad = D.Id and P.Activo = 1");
+				datos.setearSP("storeListar");
+                datos.ejecutarConsulta();
+                while (datos.Lector.Read())
+                {
+                    Pokemon aux = new Pokemon();
+                    aux.numero = (int)datos.Lector["numero"];
+                    aux.nombre = (string)datos.Lector["nombre"];
+                    aux.descripcion = (string)datos.Lector["descripcion"];
+                    if (!(datos.Lector["UrlImagen"] is DBNull))
+                    {
+                        aux.UrlImagen = (string)datos.Lector["UrlImagen"];
+                    }
+
+                    aux.id = (int)datos.Lector["id"];
+                    aux.tipo = new Elemento();
+                    aux.tipo.descripcion = (string)datos.Lector["tipo"];
+                    aux.tipo.id = (int)datos.Lector["idtipo"];
+                    aux.debilidad = new Elemento();
+                    aux.debilidad.descripcion = (string)datos.Lector["debilidad"];
+                    aux.debilidad.id = (int)datos.Lector["idDebilidad"];
+
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public List<Pokemon> listar()
         {
 			List<Pokemon> lista = new List<Pokemon>();

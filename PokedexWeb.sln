@@ -5,9 +5,9 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokedexWeb", "PokedexWeb\PokedexWeb.csproj", "{BF4A6A47-1F30-4CE0-B82D-A9010CA30B5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "..\..\curso c# nivel 3\ejemplos-asp-webform\Dominio\Dominio.csproj", "{BEA16BA4-D80A-4383-AE48-A41585F5937C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{BEA16BA4-D80A-4383-AE48-A41585F5937C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "..\..\curso c# nivel 3\ejemplos-asp-webform\Negocio\Negocio.csproj", "{DE1DFBEE-A37A-4493-9DCB-B4A63DCC9BE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{DE1DFBEE-A37A-4493-9DCB-B4A63DCC9BE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
