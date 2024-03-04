@@ -124,7 +124,32 @@ namespace Negocio
 				datos.cerrarConexion();
 			}
         }
-		public void Modificar(Pokemon pokemon)
+        public void agregarConSP(Pokemon nuevo)
+        {
+            try
+            {
+                datos.setearSP("storedAltaPokemon");
+                datos.setearParametro("@Numero", nuevo.numero);
+                datos.setearParametro("@Nombre", nuevo.nombre);
+                datos.setearParametro("@Descripcion", nuevo.descripcion);
+                datos.setearParametro("@UrlImagen", nuevo.UrlImagen);
+                datos.setearParametro("@IdTipo", nuevo.tipo.id);
+                datos.setearParametro("@IdDebilidad", nuevo.debilidad.id);
+				datos.setearParametro("@IdEvolucion",DBNull.Value);
+                datos.ejecutarAccion();
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void Modificar(Pokemon pokemon)
 		{
 			try
 			{
@@ -143,6 +168,30 @@ namespace Negocio
 			{
 
 				throw ex ;
+			}
+			finally
+			{
+				datos.cerrarConexion();
+			}
+		}
+		public void ModificarConSP(Pokemon pokemon)
+		{
+			AccesoDatos datos = new AccesoDatos();
+			try
+			{
+				datos.setearSP("storedModificarPokemon");
+                datos.setearParametro("@numero", pokemon.numero);
+                datos.setearParametro("@nombre", pokemon.nombre);
+                datos.setearParametro("@descripcion", pokemon.descripcion);
+                datos.setearParametro("@urlimagen", pokemon.UrlImagen);
+                datos.setearParametro("@IdTipo", pokemon.tipo.id);
+                datos.setearParametro("@IdDebilidad", pokemon.debilidad.id);
+                datos.setearParametro("@id", pokemon.id);
+				datos.ejecutarAccion();
+            }
+			catch (Exception ex)
+			{
+				throw ex;
 			}
 			finally
 			{
@@ -185,8 +234,24 @@ namespace Negocio
 				datos.cerrarConexion();
 			}
 		}
+        public Pokemon ObtenerPorId(int id)
+        {
+            try
+            {
+                // Obtener la lista completa de pokemons
+                List<Pokemon> lista = listar();
 
-		public List<Pokemon> filtrar(string campo, string criterio, string filtro)
+                // Buscar el pokemon con el id especificado en la lista
+                Pokemon pokemon = lista.Find(p => p.id == id);
+
+                return pokemon;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<Pokemon> filtrar(string campo, string criterio, string filtro)
 		{
 			List<Pokemon> lista = new List<Pokemon>();
 			
